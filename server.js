@@ -1,15 +1,14 @@
 // Setup server
-var express = require('express');
-var cors = require('cors');
+const express = require('express');
+const multer = require('multer');
+const upload = multer();
+const cors = require('cors');
 require('dotenv').config();
-const bodyParser = require("body-parser");
 
-var app = express();
+const app = express();
 
-// Setup cors and body parser
+// Setup cors
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 // Request logger
 app.use(function (req, res, next) {
