@@ -22,7 +22,17 @@ app.use('/public', express.static(process.cwd() + '/public'));
 
 // Serve index.html
 app.get('/', function (req, res) {
-    res.sendFile(process.cwd() + '/views/index.html');
+  res.sendFile(process.cwd() + '/views/index.html');
+});
+
+// File metadata api
+app.post('/api/fileanalyse', upload.single("upfile"), function (req, res) {
+  const {originalname, mimetype, size} = req.file;
+  res.json({
+    name: originalname,
+    type: mimetype,
+    size: size
+  });
 });
 
 
